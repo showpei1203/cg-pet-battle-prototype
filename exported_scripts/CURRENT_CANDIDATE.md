@@ -1,28 +1,29 @@
 # Current Development Candidate
 
-- Formal Candidate: **v2.6.2b Human Phase 3C Batch B Closure**
-- Inherits sealed/formal Scripts **0..276** from `main`.
-- Formal candidate index277: `CG Human Rank2 Tactical Skills v2.6.2b`
-- Index277 source SHA256: `d81a24c3875e952548ee71d27f38f1309919942c2db927a6b1e45e8be6f765d0`
-- Candidate status: **STATIC PASS / NOT FORMAL PASS**.
+- Current Binary Baseline: **v2.6.2b FINAL FORMAL PASS**.
+- Sealed/formal source range on `main`: **Scripts 0..277**.
+- Current Formal Candidate: **v2.6.3 Human Phase 3C Rank-3 Tactical Skills**, index278.
+- Index278 source SHA256: `63803cdb5699bc0af76175be699c8789f62aea31f5bd260141307219ae858fa1`.
+- Current candidate status: **STATIC PASS / NOT FORMAL PASS**.
 
-## Latest test harness
+## Current TEST build
 
-- Current TEST build: **v2.6.2c TEST HARNESS FIX**.
-- Formal Scripts 0..277 are byte-exact from v2.6.2b; only TEST-only index278 changed.
-- v2.6.2b first real-machine attempt did not enter Scene_Battle because TEST preflight called nonexistent `RPG::Skill#cg_priority`.
-- Sealed Priority Authority exposes `RPG::Skill#cg_action_priority_value`; v2.6.2c corrects only that TEST assertion.
-- TEST index278 source SHA256: `7ec62bb2e113db4b0a7e5cb00328d79b186f2d09e7ce7600663c5c59e4b88aaa`.
-- Previous v2.6.2b TEST harness remains under `tests/v2_6_2b/` as historical failed evidence.
-- Current TEST harness is under `tests/v2_6_2c/`.
+- TEST build: **v2.6.3a Human Phase 3C Rank-3 Tactical Skills 6R**.
+- TEST-only index279 source SHA256: `bc76e8c173e778f3a0b90747b46314d707aad4fbb8802713819392b96ce94942`.
+- Scripts 0..277 remain entry-exact to the v2.6.2b FORMAL PASS baseline.
+- New DB Skills: 119..124, one Rank-3 tactical skill for each canonical Human class.
+- Test plan: one actual Scene_Battle / six rounds, one class per round.
 
 ## Required release gate
 
-Windows / RPG Maker VX real-machine 2-round closure:
-- Hunter Mark ranged proxy = 1/1
-- Brawler Interrupt surviving pending target = 1/1
-- tactical_closure = 2/2
-- failures = 0
-- pending = 0
+Windows / RPG Maker VX real-machine closure:
+- `RESULT=PASS`
+- rounds=6
+- failures=0
+- rank3_skills=6/6
+- tactical_checks=6/6
+- ability_catalog=373/373
+- formal_move=937/937
+- pending=0
 
-Do not merge index277 to `main` until that real-machine log is PASS.
+Do not merge index278 to `main` or begin Rank-4 formal implementation until this gate is satisfied.
