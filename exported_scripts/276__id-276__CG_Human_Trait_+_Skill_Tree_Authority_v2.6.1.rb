@@ -94,6 +94,7 @@ module ALBERT_CG
     return 0
   end
 
+  # Extend existing rank caps without rewriting the sealed Job Core.
   HUMAN_STARTER_SKILLS.each do |class_id, skill_id|
     by_rank = JOB_SKILL_CAPS[class_id]
     next if by_rank == nil
@@ -452,6 +453,7 @@ class Scene_Battle < Scene_Base
   end
 end
 
+# Human SBS mapping for new starter skills and canonical Bow normal attack.
 module RPG
   class Skill
     alias cg_v261_human_base_action base_action
