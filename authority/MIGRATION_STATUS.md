@@ -1,6 +1,6 @@
 # GitHub Migration Status
 
-Updated: 2026-08-18 12:36 +08:00
+Updated: 2026-08-18 13:24 +08:00
 
 ## Connectivity
 - Repository: `showpei1203/cg-pet-battle-prototype`
@@ -9,20 +9,28 @@ Updated: 2026-08-18 12:36 +08:00
 - Default branch: `main`
 - Development branch: `develop`
 
-## Current branch model
-- `main`: formal/sealed source authority. Current sealed state is Scripts 0..276.
-- `develop`: current v2.6.2b candidate. Index277 is candidate runtime; TEST-only index278 lives under `tests/v2_6_2b/`.
+## Source Authority
+- `main`: latest formal / sealed Source Authority = Scripts 0..276.
+- `develop`: current v2.6.2b candidate; Candidate index277 and TEST-only index278 remain isolated from main.
+- Complete independent text export 0..276 is published under `exported_scripts/`.
+- `SCRIPT_MANIFEST.csv` preserves Script Index, Script ID, Script Name, original runtime source SHA256, and file mapping.
+- Git may normalize CRLF to LF in tracked text. Runtime byte authority therefore remains Google Drive `Scripts.rvdata`; the manifest records the original runtime source SHA256.
 
-## Directly published high-value source
-- index274 PMD Multi-Hit Ownership Bridge v2.5.53
-- index275 Human Six-Class Authority v2.6.0
-- index276 Human Trait + Skill Tree Authority v2.6.1
-- develop-only index277 Human Rank2 Tactical Skills v2.6.2b
-- develop-only TEST index278 Human Phase3C Batch B Closure v2.6.2b
+## Full Source Audit
+- Import branch commit: `b48d2ebb5923d3d19d26f75c6f93294b655dcbed`
+- Audit PR #1 merged to main.
+- Main full-source merge commit: `44edeaa5fdb3f6120f7a47bcbcd753e158c03504`
+- Post-import main -> develop sync PR #2 merged.
+- Develop sync commit: `049c63df051c1f14e037091e715ea9d937eb28e2`
+- Import tree was not truncated and contains continuous Script indices 000..276.
+- Formal source274/275 match the pre-import main copies exactly.
+- Source276 pre-import Git blob differed only at text-normalization level: PR patch was null with 0 additions / 0 deletions; Runtime source SHA remained `98acacc7b99306d43b210e269d25f37212f55a208660c0bb791d4f8532f18aa2`.
+- After sync, `develop` is behind main by 0 and differs only by Candidate277, `CURRENT_CANDIDATE.md`, and TEST278.
 
-## Remaining migration item
-The connector now supports text writes but has no direct local-file/bulk-upload transport. The exact full formal export for indices 0..276 is already materialized locally and in the migration package. Indices 0..273 still require one bulk import pass before GitHub Source Authority is considered fully migrated.
+## Binary Boundary
+No `.rvdata`, complete game ZIP, Graphics, Audio, executable build, or test logs were intentionally migrated to GitHub by this process. Those remain Google Drive Binary / Build / Asset / Log Authority.
 
-A safe import package has been prepared to push **only** a new branch `migration/full-source-import`, never force-push or overwrite `main`/`develop`. After that branch appears, it must be audited against `SCRIPT_MANIFEST.csv` and merged to `main` only on exact-match evidence.
+## Migration Result
+`GITHUB_SOURCE_MIGRATION=PASS`
 
-Runtime/gameplay was not changed by this infrastructure work.
+Gameplay/runtime was not modified by infrastructure migration. Next development gate returns to v2.6.2b RPG Maker VX real-machine 2-round closure.
