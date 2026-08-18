@@ -1,0 +1,13 @@
+# Binary/runtime authority belongs in Google Drive
+*.rvdata
+*.zip
+*.exe
+*.dll
+*.log
+Audio/
+Graphics/
+Data/
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
