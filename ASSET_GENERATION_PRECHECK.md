@@ -18,7 +18,17 @@
 - Occlusion/Par is derived later by human/tool authority and must not replace the complete Non-Ground layer.
 - Map split delivery must pass the shared Layer-Split Quality Gate: exact registration, coherent Ground, exhaustive Non-Ground coverage, clean alpha/edges, no residue/broken holes, and recomposition against Master.
 
+## Grounded SAM2 semantic audit authority
+- Grounded SAM2 is a **semantic QA / missing-object / candidate-mask assistant**, not final art, sprite-anatomy, frame-boundary, environment-layer or runtime authority.
+- For environment maps/scenes, prefer category batches and alias fallback instead of one large mixed prompt, and apply oversized-bbox sanity filtering before unioning masks.
+- Use class-specific threshold profiles; normally localized classes with implausibly large canvas coverage must be flagged/excluded unless human review accepts them.
+- Compare SAM2 evidence against the Master Scene and exhaustive All Non-Ground layer to find probable omissions/false positives.
+- For monster/character production, SAM2 may assist silhouette/region QA only. It must not redefine approved anatomy, sprite size metadata, frame anchors, animation boundaries, or battle perspective.
+- A SAM2 miss does not authorize deleting an asset/region; a SAM2 hit does not bypass CG visual/runtime QA.
+- SAM2-assisted outputs remain **DRAFT** until normal CG validation passes.
+- SAM2 workers must comply with Background Execution Authority and should release VRAM after each job on constrained local GPUs.
+
 ## Required read order
-`Shared Authority -> CG Precheck -> latest CG visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> Layer-Split Quality Gate when mapping`
+`Shared Authority -> CG Precheck -> latest CG visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
 
 Version: 2026-08-19
