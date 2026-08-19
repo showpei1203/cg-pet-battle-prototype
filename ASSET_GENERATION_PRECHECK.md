@@ -27,6 +27,7 @@
 - A SAM2 miss does not authorize deleting an asset/region; a SAM2 hit does not bypass CG visual/runtime QA.
 - SAM2-assisted outputs remain **DRAFT** until normal CG validation passes.
 - SAM2 workers must comply with Background Execution Authority and should release VRAM after each job on constrained local GPUs.
+- **Dense-map refinement:** add post-SAM mask-canvas coverage sanity checks in addition to bbox filtering. For local environment concepts that are too small in a full scene, use overlapping tiled detection, remap boxes to master coordinates, and de-duplicate with concept-level NMS before SAM2. Prefer full-scene detection for macro structures; per-class bbox/mask caps are benchmark profiles.
 
 ## Required read order
 `Shared Authority -> CG Precheck -> latest CG visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
