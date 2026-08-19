@@ -1,5 +1,7 @@
 # Shared Map Coupled Dual-Output Authority v2.2
 
+> **SUPERSEDED FOR CURRENT MAP GENERATION BY `MAP_DUAL_OUTPUT_AUTHORITY_V2_3.md`. Before producing any layered map, read v2.3 and follow its mandatory Ground-first + Pixel-crisp rules.**
+
 Effective: 2026-08-19
 Scope: Forest Symphony / PMD AutoChess Proto / CG Pet Battle Prototype
 
