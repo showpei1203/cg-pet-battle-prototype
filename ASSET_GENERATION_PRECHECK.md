@@ -10,11 +10,15 @@
 ## Inherited rules
 - Runtime isolated assets: prefer chroma-key `#FF00FF` or `#00FF00`.
 - Runtime pixel assets: `flat colors`, `no anti-aliasing`, `crisp edges`, approved limited palette.
-- Human/map environment readability uses a 32x32 player/tile reference.
+- **32x32 is the human/map WORLD-SCALE player/tile reference, not a total environment canvas limit.** `544x416` is only a viewport reference.
 - **MONSTERS ARE NOT LIMITED TO 32x32 PIXELS.** Size may vary by species, evolution stage, silhouette, battle role, boss scale and composition.
 - Large-scale monster production must preserve silhouette/perspective consistency across batches; size is metadata-driven, not normalized to one square.
+- When producing large map/parallax/environment scenes, preserve `Master + Ground-Only + exhaustive All Non-Ground Objects` at identical canvas registration.
+- All Non-Ground Objects must include every building, wall, gate, tree, statue/fountain, landmark and environmental prop even when it is not expected to cover the actor.
+- Occlusion/Par is derived later by human/tool authority and must not replace the complete Non-Ground layer.
+- Map split delivery must pass the shared Layer-Split Quality Gate: exact registration, coherent Ground, exhaustive Non-Ground coverage, clean alpha/edges, no residue/broken holes, and recomposition against Master.
 
 ## Required read order
-`Shared Authority -> CG Precheck -> latest CG visual/asset benchmark -> generate/edit image`
+`Shared Authority -> CG Precheck -> latest CG visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> Layer-Split Quality Gate when mapping`
 
 Version: 2026-08-19
