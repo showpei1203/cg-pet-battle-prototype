@@ -6,6 +6,7 @@
 2. Read the CG Drive authority file `ASSET_GENERATION_PRECHECK_CG` in `CG_Pet_Battle_Prototype/00_Project_Authority`.
 3. Identify asset mode: character/monster/battle-motion/icon/environment/reusable prop.
 4. Apply the latest CG visual/runtime authority before generating.
+5. **If the request is any layered map/parallax/environment generation or edit, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_2.md` before generating and explicitly use `COUPLED DUAL OUTPUT + OBJECT OWNERSHIP` mode.**
 
 ## Inherited rules
 - Runtime isolated assets: prefer chroma-key `#FF00FF` or `#00FF00`.
@@ -18,6 +19,16 @@
 - **PAR = everything else.** Buildings, walls, gates, towers, roofs, trees/trunks/canopies, bushes, rocks, statues/fountains, fences, signs, stalls, bridges, structural stairs/steps and every environment prop belong in PAR.
 - Occlusion is not the criterion for PAR membership. Actor-covering regions may be derived later by human/tool authority.
 - Map split delivery must pass the shared Layer-Split Quality Gate, with `MASTER ≈ GROUND + COMPLETE PAR` as the completeness test.
+
+## Coupled dual-output map generation — v2.2
+- Do not generate a complete Master first and later ask a generation model to independently redraw a PAR interpretation.
+- For new layered maps, Ground and Complete PAR must be sibling outputs from one shared layout/geometry authority and one object-ownership plan.
+- Object ownership is exclusive by **visible structure**, not by raw alpha coordinates. Ground may contain reconstructed water/terrain/floor beneath a PAR object, but must not visibly duplicate that object.
+- Ground ownership includes true terrain/floor/road/plaza tiles, flowers, grass and water surfaces.
+- Bridge structure = PAR-only; under-bridge water/terrain/bank = Ground-only.
+- Fountain stone structure = PAR; fountain water = Ground.
+- Ambiguous/discrete placed objects default to PAR.
+- Candidate remains DRAFT until registration, duplicate-structure, recomposition and normal CG visual/runtime QA pass.
 
 ## Grounded SAM2 semantic audit authority
 - Grounded SAM2 is a **semantic QA / missing-object / candidate-mask assistant**, not final art, sprite-anatomy, frame-boundary, environment-layer or runtime authority.
@@ -37,6 +48,6 @@ This supersedes older wording that treated PAR as only actor-occluding material:
 No non-Ground object may be omitted from PAR because of height, collision, occlusion, importance, or SAM2 classification.
 
 ## Required read order
-`Shared Authority -> CG Precheck -> latest CG visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
+`Shared Authority -> CG Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_2 when mapping -> latest CG visual/asset benchmark -> confirm scale/canvas/layer mode -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate when mapping`
 
-Version: 2026-08-19
+Version: 2026-08-19 v2.2
