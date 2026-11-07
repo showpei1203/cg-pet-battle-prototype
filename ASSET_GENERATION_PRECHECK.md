@@ -1,5 +1,7 @@
 # CG Pet Battle Prototype — Asset Generation Precheck
 
+> **P0 GLOBAL HARD RULES 001 (2026-11-07)**：先讀 [跨專案最高規則](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)。新素材、CG 專案完整母體、Patch ZIP、Scripts.rvdata 對照、真機 QA/LOG、截圖及 Handoff 全部永久保存到 Google Drive/GitHub，不再把使用者 PC 當正式執行/patch 交付目錄。必要 Windows RMVX 實機需要本機臨時複本，必須事先說明並取得使用者同意，雲端驗證完畢後清理；禁止默認已授權。**背景可執行**不等於可長期在 PC 保存。CG 原有 sealed baseline／patch 相對路徑技術契約不變，變更的是寫入／保管位置。
+
 **Mandatory before every image generation or image edit.**
 
 1. Read Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`.
